@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="calculator.css">
+</head>
+<body>
+    
+    <p class="calculation" id="result"></p>
+
+    <p>
+        <button class="calculator-button gray-button" onclick="num('1')">1</button>
+        <button class="calculator-button gray-button" onclick="num('2')">2</button>
+        <button class="calculator-button gray-button" onclick="num('3')">3</button>
+        <button class="calculator-button orange-button" onclick="shenja('+')">+</button>
+    </p>
+
+    <p>
+        <button class="calculator-button gray-button" onclick="num('4')">4</button>
+        <button class="calculator-button gray-button" onclick="num('5')">5</button>
+        <button class="calculator-button gray-button" onclick="num('6')">6</button>
+        <button class="calculator-button orange-button" onclick="shenja('-')">-</button>
+    </p>
+
+    <p>
+        <button class="calculator-button gray-button" onclick="num('7')">7</button>
+        <button class="calculator-button gray-button" onclick="num('8')">8</button>
+        <button class="calculator-button gray-button" onclick="num('9')">9</button>
+        <button class="calculator-button orange-button" onclick="shenja('*')">*</button>
+    </p>
+
+    <p>
+        <button class="calculator-button gray-button" onclick="num('0')">0</button>
+        <button class="calculator-button gray-button" onclick="decimal()">.</button>
+        <button class="calculator-button gray-button" onclick="kalkulo()">=</button>
+        <button class="calculator-button orange-button" onclick="shenja('/')">/</button>
+    </p>
+
+    <p>
+        <button class="calculator-button gray-button clear-button" onclick="fshij()">Clear</button>
+    </p>
+
+    <script>
+        const resultElement = document.getElementById('result');
+        let currentInput = '';
+
+        function num(number) {
+            currentInput += number;
+            updateDisplay();
+        }
+
+        function shenja(operator) {
+            currentInput += ` ${operator} `;
+            updateDisplay();
+        }
+
+        function decimal() {
+            currentInput += '.';
+            updateDisplay();
+        }
+
+        function fshij() {
+            currentInput = '';
+            updateDisplay();
+        }
+
+        function kalkulo() {
+            try {
+                const result = eval(currentInput);
+                resultElement.textContent = result;
+            } catch (error) {
+                resultElement.textContent = 'Error';
+            }
+        }
+
+        function updateDisplay() {
+            resultElement.textContent = currentInput;
+        }
+    </script>
+</body>
+</html>
